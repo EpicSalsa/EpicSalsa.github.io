@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<body>
+  <canvas id="c" width="200", height="200"></canvas>
+  <script>
+    var c     = document.querySelector("#c");
+    var ctx   = c.getContext("2d");
+    var image = new Image();
+
+    image.onload = function() {
+      console.log("loading image");
+      ctx.drawImage(image, 0, 0, c.width, c.height);
+      // Create a text string that represents the photo
+      var savedImage = c.toDataURL(); 
+      window.open(savedImage)
+    }
+
+    image.src = "image/Haljesta.jpg";
+
+  </script>
+
+</body>
+</html>
