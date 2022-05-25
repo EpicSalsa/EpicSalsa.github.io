@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style/country.css">
+  <script type="text/javascript" src="script/country.js"></script> 
+  <title>Countries and capitals</title>
+</head>
+<body onload="convertJSON()">
+
+  <div class="header">
+    <h1>What is the capital of .. ?</h1>
+  </div>
+
+  <div class="main">
+    <p>There are currently 193 United Nation member states.
+    How many captials do you know?.</p>
+    <button onclick="chooseCountry()">Select a random country</button> 
+    <p id="cty"></p>
+    <label for="answer">Answer: </label>
+    <input id="answer" type="text" onfocus="this.value=''" name="answer">
+    <br/> <br/>
+    <button onclick="getCapital()">Check your answer</button> 
+    <p id="cap"></p>
+  </div>
+
+  <div class="menu">
+    <p><strong>Scoreboard</strong></p>
+    <ul class="main">
+      <li id="correct"></li>
+      <li id="incorrect"></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <a href="index.html">Home</a>&nsbp;
+    <a href="index.html">Another</a>
+  </div>
+
+</body>
+</html>

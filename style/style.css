@@ -14,3 +14,9 @@
   float: right;
   padding: 15px;
 }
+
+.main-col1{
+  width: 70%;
+  float: left;
+  text-align: center
+}
