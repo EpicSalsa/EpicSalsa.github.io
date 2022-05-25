@@ -6,6 +6,7 @@ var quesCountry = ""
 var rndInt = 0
 var correct = 0;
 var incorrect = 0;
+var tick = false;
 
 
 // converting to JSON
@@ -22,31 +23,39 @@ function chooseCountry() {
 
   // Put the capital of country question into a sentence.
   document.getElementById('cty').innerHTML = question;
-  document.getElementById('cap').innerHTML = ""; // Clear correct answer field
+
+  // Clear fields
+  document.getElementById('cap').innerHTML = ""; 
+  document.getElementById('answer').value = "";
+  document.getElementById('answer').readOnly = false;
+  tick = false; // An attempt at the answer has not been made
 }
 
-// Select the capital for the chosen random conutry
+// Select the capital for the chosen random country
 function getCapital() {  
   var capital = json[rndInt]['Capital'];
   var answer  = document.getElementById('answer').value;
-  var result = "";
+  var result  = "";
 
-  if (answer.toLowerCase() == capital.toLowerCase()) {
+  if (answer.toLowerCase() == capital.toLowerCase() && !tick) {
     result = "Correct! The capital of " + quesCountry + " is " + answer;
     correct += 1
   }
-  else{
+  if (answer.toLowerCase() != capital.toLowerCase() && !tick) {
     result = "Incorrect! The capital of " + quesCountry + " is " + capital; 
     incorrect += 1  
   }
 
-  // Set the corrcet answer field.
+  // Set the correct answer field.
   document.getElementById('cap').innerHTML = result;
 
   // Set the score fields.
   document.getElementById('correct').innerHTML = "correct : " + correct;
-  document.getElementById('incorrect').innerHTML = "incorrect : " + incorrect;
-  
+  document.getElementById('incorrect').innerHTML = "incorrect : " + incorrect; 
+
+  // Do not allow your answer to be changed.
+  document.getElementById('answer').readOnly = true
+  tick = true; // An attempt at the answer has been made
 }
 
 function getRandomIntInclusive(min, max) {
